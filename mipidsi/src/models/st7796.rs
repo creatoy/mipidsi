@@ -1,6 +1,6 @@
 use display_interface::{DataFormat, WriteOnlyDataCommand};
 use embedded_graphics_core::{pixelcolor::Rgb565, prelude::IntoStorage};
-use embedded_hal::{blocking::delay::DelayUs, digital::v2::OutputPin};
+use embedded_hal::{delay::DelayNs, digital::OutputPin};
 
 use crate::{
     dcs::{
@@ -8,7 +8,7 @@ use crate::{
         SetDisplayOn, SetInvertMode, SetPixelFormat, SetScrollArea, SoftReset, WriteMemoryStart,
     },
     error::InitError,
-    Builder, ColorInversion, ColorOrder, Error, ModelOptions,
+    Builder, Error, ModelOptions,
 };
 
 use super::Model;
@@ -30,7 +30,7 @@ impl Model for ST7796 {
     ) -> Result<SetAddressMode, InitError<RST::Error>>
     where
         RST: OutputPin,
-        DELAY: DelayUs<u32>,
+        DELAY: DelayNs,
         DI: WriteOnlyDataCommand,
     {
         match rst {

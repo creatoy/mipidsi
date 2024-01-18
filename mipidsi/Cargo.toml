@@ -14,13 +14,12 @@ rust-version = "1.61"
 [dependencies]
 display-interface = "0.5.0"
 embedded-graphics-core = "0.4.0"
-embedded-hal = "0.2.7"
-embedded-hal-1 = { package = "embedded-hal", version = "1.0" }
-nb = "1.0.0"
+embedded-hal = "1.0.0"
+nb = "1.1.0"
 
 [dependencies.heapless]
 optional = true
-version = "0.7.16"
+version = "0.8.0"
 
 [features]
 default = ["batch"]
